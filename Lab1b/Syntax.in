@@ -1,0 +1,45 @@
+2. Syntax:
+
+program ::= "variable" decllist ";" "start" stmtlist "end"
+
+decllist ::= declaration | declaration ";" decllist
+
+declaration ::= identifier ":" type
+
+type1 ::= "bool" | "ch" | "integer" | "real"
+
+arraydecl ::= "list" "[" nr "]" "of" type1
+
+type ::= type1 | arraydecl
+
+stmtlist ::= stmt | stmt ";" stmtlist
+
+stmt ::= simplstmt | structstmt
+
+simplstmt ::= assignstmt | iostmt
+
+assignstmt ::= identifier "is" expression
+
+expression ::= expression "+" term | expression "-" term | term
+
+term ::= term "*" factor | term "/" factor | factor
+
+factor ::= "(" expression ")" | identifier
+
+iostmt ::= "sk" | "ps" "(" identifier ")"
+
+structstmt ::= ifstmt | whilestmt
+
+ifstmt ::= "maybe" "(" condition ")" "{" stmtlist "}" ["otherwise{" stmtlist "}"]
+
+whilestmt ::= "until" "(" condition ")" "{" stmtlist "}"
+
+condition ::= expression RELATION expression
+
+RELATION ::= "<" | "<=" | "==" | "<>" | ">=" | ">"
+
+constchar:="string"
+
+string:=char{string}
+
+char:=letter | digit

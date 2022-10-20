@@ -1,0 +1,19 @@
+Symbol table documentation
+
+The symbol table is a hash table of dynamic size, default size being 4093.
+The elements in the hash table are lists, in order to store elements with the same hash value.
+
+The hash() function computes the hash for 2 types of values:
+	- in case the value is int, it returns the modulo between the value and the size of the hash table.
+	- in case the value is string, it return the modulo between the sum of the ascii code of each character in the string and the size
+	  of the hash table.
+	  
+The add(value) function computes the hash for the recieved value and adds the element to the array corresponding to the hash value.
+
+The get(value) function computes the hash for the recieved value and returns:
+	- a pair containing the hash value and the position in the array, if the value exists
+	- (None, None), otherwise
+	
+The hasValue(value) function computes the hash for the recieved value and returns:
+	- true, if the value exists
+	- false, otherwise

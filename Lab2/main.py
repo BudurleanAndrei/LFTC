@@ -17,7 +17,7 @@ class SymbolTable:
         key = self.hash(value)
         if self._array[key] is not None:
             for elem in self._array[key]:
-                if elem is key:
+                if elem is value:
                     return
                 else:
                     self._array[key].append(value)

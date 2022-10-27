@@ -1,12 +1,11 @@
-Greatest number out of 3 numbers
 
-sk - scan from keyboard
-ps - print to screen
+variable
+n1: integer;
+n2: integer;
+n3: integer;
+greatest: integer;
 
-
-
-number n1,n2,n3
-number greatest
+start
 
 sk(n1)
 sk(n2)
@@ -22,3 +21,5 @@ otherwise maybe (n2 >= n1 also n2 >= n3) {
 		}
 
 ps(greatest)
+
+end

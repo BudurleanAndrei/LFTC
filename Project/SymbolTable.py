@@ -17,7 +17,7 @@ class SymbolTable:
         key = self.hash(value)
         if self._array[key] is not None:
             for elem in self._array[key]:
-                if elem is value:
+                if elem == value:
                     return
                 else:
                     self._array[key].append(value)
@@ -30,13 +30,13 @@ class SymbolTable:
         key = self.hash(value)
 
         if self._array[key] is None:
-            return None, None
+            return (None, None)
 
         for elem in self._array[key]:
             if elem is value:
-                return key, self._array[key].index(elem)
+                return (key, self._array[key].index(elem))
 
-        return None, None
+        return (None, None)
 
     def hasValue(self, value):
         key = self.hash(value)
@@ -50,6 +50,21 @@ class SymbolTable:
 
         return False
 
+    def __str__(self):
+        string = ""
+
+        for i in range(len(self._array)):
+            if self._array[i] is None:
+                continue
+
+            print(len(self._array[i]))
+
+            for j in range(len(self._array[i])):
+                string += self._array[i][j] + " - " + str(self.get(self._array[i][j]))
+
+            string += "\n"
+
+        return string
 
 
 table = SymbolTable()

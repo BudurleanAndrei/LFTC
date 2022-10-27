@@ -1,16 +1,9 @@
-Number is prime
 
-sk - scan from keyboard
-ps - print to screen
-finish - return
-until - reverse while (does action until statement is true)
+variable
+nr: integer;
+i: integer;
 
-is - true
-isnot - false
-
-
-
-number nr
+start
 
 sk(nr)
 
@@ -18,7 +11,6 @@ maybe (nr % 2 == 0) {
 	finish(isnot)
 }
 
-number i
 i is 3
 
 until (i * i >= nr) {
@@ -28,6 +20,5 @@ until (i * i >= nr) {
 	
 	i is i + 2
 }
-
 
 finish(is)

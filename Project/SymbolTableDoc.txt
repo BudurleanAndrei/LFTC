@@ -1,6 +1,3 @@
-Git link:
-https://github.com/BudurleanAndrei/LFTC/tree/main/Lab2
-
 Symbol table documentation
 
 The symbol table is a hash table of dynamic size, default size being 4093.

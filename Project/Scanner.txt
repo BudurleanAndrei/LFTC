@@ -1,0 +1,21 @@
+Scanner documentation
+
+The scanner contains a list of operators, separators and reserved keywords.
+It also has a Symbol Table and a PIF.
+
+The tokenize() function computes and returns the tokens from the given file by:
+	- reading from file and saving the text
+	- adding spaces before and after each separator
+	- spliting the text by spaces
+The scan() function gets the tokens and clasifies them in one of the following categories:
+	- reserved words
+		- then adds them to PIF
+	- operators
+		- then adds them to PIF
+	- separators
+		- then adds them to PIF
+	- identifiers
+		- then adds them to PIF and the Symbol Table
+	- constants
+		- then adds them to PIF and the Symbol Table
+	- if a token cannot be clasified, print an error

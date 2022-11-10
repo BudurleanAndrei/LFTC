@@ -1,0 +1,20 @@
+The FiniteAutomata class expresses a M = (Q,Σ,δ,p,F) finite automata.
+
+The readFromFile(filepath) function reads all elements of the FiniteAutomata form a file in this order:
+	- all states (first state is the starting state)
+	- all elements of the alphabet
+	- all transitions
+	- all final states
+	
+The accepts(sequence) function checks if the given sequence is accepted by the FiniteAutomata:
+	- returns false if any unaccepted character exists, if the automata is not deterministic or if the sequence is not accepted
+	- returns true otherwise
+	
+The FA.in file should be like this:
+	states = [state","] state
+	alphabet = [character","] character
+	transitions = [transition","] transition
+	transition = state"~"terminal"~"state
+	finalstates = [state","] state
+	FA = states "\n" alphabet "\n" transitions "\n" finalstates
+	

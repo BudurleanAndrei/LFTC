@@ -1,5 +1,6 @@
 from PIF import PIF
 from SymbolTable import SymbolTable
+from FiniteAutomata import FiniteAutomata
 import re
 
 
@@ -40,6 +41,8 @@ class Scanner:
         identifier_pattern = re.compile("^[A-Za-z]+[A-Za-z0-9]*$")
         constant_pattern = re.compile("^\"[A-Za-z0-9]*\"$")
         number_pattern = re.compile("^[0-9]+$")
+        faidentif = FiniteAutomata("..\\OutputFiles\\FAIdentifiers.in")
+        fanrconst = FiniteAutomata("..\\OutputFiles\\FAIntegerConstant.in")
 
         for token in tokens:
             if token in self._reserved_words:
@@ -48,10 +51,10 @@ class Scanner:
                 self._PIF.add((token, (-1, -1)), 3)
             elif token in self._separators:
                 self._PIF.add((token, (-1, -1)), 4)
-            elif identifier_pattern.match(token):
+            elif faidentif.accepts(token):
                 self._symbol_table.add(token)
                 self._PIF.add((token, self._symbol_table.get(token)), 0)
-            elif constant_pattern.match(token) or number_pattern.match(token):
+            elif constant_pattern.match(token) or fanrconst.accepts(token):
                 self._symbol_table.add(token)
                 self._PIF.add((token, self._symbol_table.get(token)), 1)
             else:

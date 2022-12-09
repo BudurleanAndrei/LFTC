@@ -2,6 +2,6 @@ S,A,B,C
 (,),int,+,*
 S
 S->A B
-A->( S )|int C
+A->( S )|int C|EPS
 B->+ S|EPS
 C->* A|EPS

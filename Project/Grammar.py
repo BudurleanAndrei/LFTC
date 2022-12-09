@@ -46,18 +46,22 @@ class Grammar:
 
     def printNonTerminals(self):
         print(self.nonTerminals)
+        
     def printTerminals(self):
         print(self.terminals)
+
     def printStartingSymbol(self):
         print(self.startingSymbol)
+
     def printProductions(self):
         print(self.productions)
 
 
-g = Grammar()
-g.loadFromFile("..\\OutputFiles\\G1.txt")
-g.printNonTerminals()
-g.printStartingSymbol()
-g.printTerminals()
-g.printProductions()
-print(g.isCFG())
+
+# g = Grammar()
+# g.loadFromFile("..\\OutputFiles\\G1.txt")
+# g.printNonTerminals()
+# g.printStartingSymbol()
+# g.printTerminals()
+# g.printProductions()
+# print(g.isCFG())

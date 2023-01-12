@@ -55,28 +55,33 @@ class Parser:
                     tokens = production.split(" ")
                     if nonTerminal in tokens:
                         if nonTerminal == tokens[-1]:
-                            self.followTable[nonTerminal].add(self.eps)
+                            self.followTable[nonTerminal].update(self.followTable[{i for i in self.grammar.productions if production in self.grammar.productions[i]}.pop()])
                             break
                         start = False
+                        addFollow = True
                         for token in tokens:
                             if start:
                                 if token in self.grammar.terminals:
                                     self.followTable[nonTerminal].add(token)
+                                    addFollow = False
                                     break
                                 self.followTable[nonTerminal].update(self.firstTable[token])
                                 if self.eps not in self.firstTable[token]:
+                                    addFollow = False
                                     break
                             if token == nonTerminal:
                                 start = True
+                        if addFollow:
+                            self.followTable[nonTerminal].update(self.followTable[{i for i in self.grammar.productions if production in self.grammar.productions[i]}.pop()])
             if previousFollow == self.followTable:
                 done = True
             previousFollow = copy.deepcopy(self.followTable)
 
 
-g = Grammar()
-g.loadFromFile("..\\OutputFiles\\G1.txt")
-p = Parser(g)
-p.first()
-print(p.firstTable)
-p.follow()
-print(p.followTable)
+# g = Grammar()
+# g.loadFromFile("..\\OutputFiles\\G1.txt")
+# p = Parser(g)
+# p.first()
+# print(p.firstTable)
+# p.follow()
+# print(p.followTable)

@@ -7,6 +7,7 @@ class Grammar:
         self.nonTerminals = []
         self.startingSymbol = None
         self.productions = dict()
+        self.productionCodes = list()
 
     def loadFromFile(self, filePath):
         separator = ','
@@ -26,6 +27,8 @@ class Grammar:
                 tokens = production[1].split(productionSep)
                 self.productions[production[0]] = tokens
                 production = file.readline().replace('\n', '').split(productionArrow)
+
+            self.setProductionCodes()
 
         except Exception as ex:
             print(ex)
@@ -56,6 +59,12 @@ class Grammar:
     def printProductions(self):
         print(self.productions)
 
+    def setProductionCodes(self):
+        for lhs in self.productions.keys():
+            for rhs in self.productions[lhs]:
+                self.productionCodes.append((lhs, rhs))
+
+
 
 
 # g = Grammar()
@@ -65,3 +74,5 @@ class Grammar:
 # g.printTerminals()
 # g.printProductions()
 # print(g.isCFG())
+# g.setProductionCodes()
+# print(g.productionCodes)

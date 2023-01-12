@@ -8,6 +8,17 @@ class PIF:
         self._tokens.append(elem)
         self._type.append(_type)
 
+    def getTokens(self):
+        val = list()
+        for (lhs, rhs) in self._tokens:
+            if self._type[lhs] == 0:
+                val.append("identif")
+            elif self._type[lhs] == 1:
+                val.append("const")
+            else:
+                val.append(lhs)
+        return val
+
     def __str__(self):
         string = ""
 

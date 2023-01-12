@@ -1,3 +1,4 @@
+start
 
 variable
 n1: integer;
